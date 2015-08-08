@@ -296,7 +296,7 @@ static int rtl871x_get_sta_wpaie(struct rtl871x_driver_data *drv, u8 *iebuf, u8 
 {	
 	struct ieee_param param;
 
-	printf("+%s, " MACSTR " is sta's address\n", __func__, MAC2STR(addr));
+	//printf("+%s, " MACSTR " is sta's address\n", __func__, MAC2STR(addr));
 
 	memset(&param, 0, sizeof(param));
 
@@ -703,7 +703,7 @@ static int rtl871x_send_eapol_ops(void *priv, const u8 *addr, const u8 *data, si
 	size_t len;
 	int status;
 
-	printf("+rtl871x_send_eapol\n");
+	//printf("+rtl871x_send_eapol\n");
 
 	/*
 	 * Prepend the Ethernet header.  If the caller left us
@@ -1243,7 +1243,7 @@ static int rtl871x_sta_add2_ops(const char *ifname, void *priv,
 	//int i, tx_supp_rates = 0;
 	struct rtl871x_driver_data *drv = priv;
 	
-	printf("%s\n", __func__);
+	//printf("%s\n", __func__);
 
 	memset(&param, 0, sizeof(param));
 	param.cmd = RTL871X_HOSTAPD_ADD_STA;
@@ -1310,7 +1310,7 @@ static int rtl871x_sta_remove_ops(void *priv, const u8 *addr)
 	struct rtl871x_driver_data *drv = priv;
 	struct ieee_param param;
 
-	printf("+%s, " MACSTR " is sta address removed\n", __func__, MAC2STR(addr));
+	//printf("+%s, " MACSTR " is sta address removed\n", __func__, MAC2STR(addr));
 
 	//hostap_sta_set_flags(drv, addr, 0, 0, ~WLAN_STA_AUTHORIZED);
 
@@ -1335,7 +1335,7 @@ static int rtl871x_set_hidden_ssid_ops(const char *iface, void *priv, u8 value)
 	struct rtl871x_driver_data *drv = priv;
 	struct hostapd_data *hapd = drv->hapd;
 
-	printf("%s\n", __func__);
+	//printf("%s\n", __func__);
 
 	pparam.cmd = RTL871X_HOSTAPD_SET_HIDDEN_SSID;
 	pparam.u.wpa_param.name = 0;
@@ -1383,7 +1383,7 @@ static int rtl871x_set_beacon_ops(void *priv, struct wpa_driver_ap_params *param
 	if((params->head_len<24) ||(!params->head))
 		return -1;
 
-	printf("%s\n", __func__);
+	//printf("%s\n", __func__);
 
 
 #ifdef RTL871X_HIDDEN_SSID_SUPPORT
@@ -1480,7 +1480,7 @@ static int rtl871x_set_key_ops(const char *ifname, void *priv, enum wpa_alg alg,
 	int ret = 0;
 	struct rtl871x_driver_data *drv = priv;
 
-	printf("%s\n", __func__);
+	//printf("%s\n", __func__);
 
 	blen = sizeof(*param) + key_len;
 	buf = os_zalloc(blen);
@@ -1592,7 +1592,7 @@ static int rtl871x_set_encryption_ops(const char *ifname, void *priv,
 static int rtl871x_sta_deauth_ops(void *priv, const u8 *own_addr, const u8 *addr,
 		   int reason)
 {
-	printf("+%s, " MACSTR " is deauth, reason=%d\n", __func__, MAC2STR(addr), reason);
+	//printf("+%s, " MACSTR " is deauth, reason=%d\n", __func__, MAC2STR(addr), reason);
 
 	//struct hostap_driver_data *drv = priv;
 	struct rtl871x_driver_data *drv = priv;
@@ -1648,7 +1648,7 @@ static int rtl871x_set_wps_assoc_resp_ie(struct rtl871x_driver_data *drv, const 
 	ieee_param *pparam;
 
 	
-	printf("%s\n", __func__);
+	//printf("%s\n", __func__);
 
 	sz = len + 12 + 2;// 12+2 = cmd+sta_addr+reserved, sizeof(ieee_param)=64, no packed
 	pparam = os_zalloc(sz);
@@ -1678,7 +1678,7 @@ static int rtl871x_set_wps_beacon_ie(struct rtl871x_driver_data *drv, const void
 	ieee_param *pparam;
 
 	
-	printf("%s\n", __func__);
+	//printf("%s\n", __func__);
 
 	sz = len + 12 + 2;// 12+2 = cmd+sta_addr+reserved, sizeof(ieee_param)=64, no packed
 	pparam = os_zalloc(sz);
@@ -1708,7 +1708,7 @@ static int rtl871x_set_wps_probe_resp_ie(struct rtl871x_driver_data *drv, const 
 	ieee_param *pparam;
 	
 	
-	printf("%s\n", __func__);
+	//printf("%s\n", __func__);
 
 	sz = len + 12 + 2;// 12+2 = cmd+sta_addr+reserved, sizeof(ieee_param)=64, no packed
 	pparam = os_zalloc(sz);
